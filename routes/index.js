@@ -1,11 +1,15 @@
-//importing express
+//requiring express and port
 const express = require('express');
-const router = express.Router();
+const router = express();
 
-//console log to check if router loaded or not
-console.log('Router is loaded');
+//importing home controller
+const homeController = require('../controllers/home_controller');
 
+//router for getting req of home
+router.get('/', homeController.home);
 
+//requiring products route
+router.use('/products', require('./products'));
 
 //exporting router
 module.exports = router;
